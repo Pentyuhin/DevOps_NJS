@@ -1,20 +1,20 @@
 name: CI Pipeline
-
+ 
 on:
   push:
     branches: [main]
-
+ 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
+ 
       - name: Установка зависимостей
-        run: run: npm install  # ← Изменили на npm install with ci
-
+        run: npm ci
+ 
       - name: Линтинг
         run: npm run lint
-
+ 
       - name: Запуск тестов
         run: npm run test
