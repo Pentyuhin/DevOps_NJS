@@ -1,30 +1,25 @@
-// eslint.config.js
-import js from '@eslint/js';
-import globals from 'globals';
-
-export default [
-    {
-        files: ['**/*.js'],
-        ignores: ['node_modules/**'],
-        languageOptions: {
-            ecmaVersion: 'latest',
-            sourceType: 'module',
-            globals: {
-                ...globals.node, // Добавляет node globals включая process
-                ...globals.es2021
-            }
-        },
-        rules: {
-            ...js.configs.recommended.rules,
-            'no-unused-vars': 'warn',
-            'no-console': 'warn',
-            'indent': ['error', 4],
-            'quotes': ['error', 'single'],
-            'semi': ['error', 'always']
+export default [{
+    files: ['**/*.js'],
+    ignores: ['node_modules/**'],
+    languageOptions: {
+        ecmaVersion: 'latest',
+        sourceType: 'module',
+        globals: {
+            process: 'readonly', // Явно указываем process
+            console: 'readonly',
+            __dirname: 'readonly',
+            __filename: 'readonly',
+            require: 'readonly',
+            module: 'readonly',
+            exports: 'readonly'
         }
+    },
+    rules: {
+        'no-unused-vars': 'warn',
+        'no-console': 'warn',
+        'semi': ['error', 'always']
     }
-];
-
+}];
 // import globals from "globals";
 // import { defineConfig } from "eslint/config";
 
